@@ -10,7 +10,8 @@ function App() {
       }}
     >
       {/* TODO: change icon Bg + borders */}
-      <GridItem boxSize={'60px'} area="nav">
+
+      <GridItem area="nav">
         <NavBar />
       </GridItem>
 
