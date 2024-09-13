@@ -1,34 +1,15 @@
-import { useEffect, useState } from 'react';
-import apiClient from '../services/api-client';
 import { Text } from '@chakra-ui/react';
+import useGames from '../hooks/UseGames';
 
-interface Games {
-  id: number;
-  name: string;
-}
-// structure the response, for autocompletion & abstraction
-interface GameResponse {
-  //these properties from rawg
-  count: number;
-  results: Games[];
-}
 const GameGrid = () => {
-  // store game fetched
-  const [games, setGames] = useState<Games[]>([]);
-  // display error
-  const [error, setError] = useState('');
-
-  //fetch games
-  useEffect(() => {
-    apiClient
-      .get<GameResponse>('/games') //finish directory from baseURL
-      .then((res) => setGames(res.data.results)) // get response results
-      .catch((err) => setError(err.message)); // catch errors if needed
-  });
+  //use it like any other hook
+  const { games, error } = useGames(); //destructure the hook
 
   return (
     <>
+      {/* display error if found */}
       {error && <Text>{error}</Text>}
+      {/* map the games */}
       <ul>
         {games?.map((game) => (
           <li key={game.id}>{game.name}</li>
