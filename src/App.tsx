@@ -18,12 +18,10 @@ function App() {
 
       {/* Show only when Above Large */}
       <Show above="lg">
-        <GridItem area="aside" bg="green">
-          Aside
-        </GridItem>
+        <GridItem area="aside">Aside</GridItem>
       </Show>
 
-      <GridItem area="main" bg="gold">
+      <GridItem area="main">
         <GameGrid />
       </GridItem>
     </Grid>
