@@ -2,10 +2,17 @@ import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 import { CanceledError } from 'axios';
 
+interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Games {
   id: number;
   name: string;
-  background_image: string; // ex. "image_background": "http://example.com",
+  background_image: string;
+  parent_platforms: { platform: Platform }[]; //parent_platform: is an Array of objects, the has property with obj Platform.
 }
 
 interface GameResponse {
@@ -25,7 +32,7 @@ const useGames = () => {
     // controller & signal
     const controller = new AbortController();
 
-    apiClient
+    apiClient()
       .get<GameResponse>('/games', { signal: controller.signal }) // 2nd args pass the signal
       .then((res) => setGames(res.data.results))
       .catch((err) => {
