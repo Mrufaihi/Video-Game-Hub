@@ -24,19 +24,15 @@ const iconMap: { [key: string]: IconType } = {
   pc: FaWindows,
   linux: FaLinux,
   mac: FaApple,
-  Ios: FaApple,
-  andriod: FaAndroid,
+  ios: FaApple,
+  android: FaAndroid,
 };
 
 const PlatformIcons = ({ game }: Props) => {
   return (
     <>
       {game.parent_platforms.map((platform) => (
-        <Icon
-          marginX={1}
-          color={'gray.500'}
-          as={iconMap[platform.platform.slug]}
-        /> //use iconMap mapping, link it with platform slug.
+        <Icon color={'gray.500'} as={iconMap[platform.platform.slug]} /> //use iconMap mapping, link it with platform slug.
       ))}
     </>
   );

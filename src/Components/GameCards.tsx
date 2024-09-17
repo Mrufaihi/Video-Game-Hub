@@ -1,6 +1,14 @@
-import { Card, CardBody, Heading, Image } from '@chakra-ui/react';
+import {
+  Card,
+  CardBody,
+  Heading,
+  HStack,
+  Image,
+  Spacer,
+} from '@chakra-ui/react';
 import { Games } from '../hooks/useGames';
 import PlatformIcons from './PlatformIcons';
+import GameScore from './GameScore';
 
 interface Props {
   game: Games;
@@ -11,12 +19,13 @@ const GameCards = ({ game }: Props) => {
     <Card margin={'10px'}>
       <Image src={game.background_image} />
       <CardBody>
-        {/* we seperated Platform icons cause code is too long, 
-        also this page only for displaying Card not managing icons */}
+        <HStack>
+          <PlatformIcons game={game} />
+          <Spacer />
+          <GameScore score={game.metacritic} />
+        </HStack>
 
-        <PlatformIcons game={game} />
-
-        <Heading marginY={1} size={'xl'}>
+        <Heading marginY={'5px'} size={'xl'}>
           {game.name}
         </Heading>
       </CardBody>
