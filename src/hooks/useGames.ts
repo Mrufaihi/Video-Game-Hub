@@ -11,7 +11,7 @@ interface Platform {
 export interface Games {
   id: number;
   name: string;
-  background_image: string;
+  background_image: string; //url
   parent_platforms: { platform: Platform }[]; //parent_platform: is an Array of objects, the has property with obj Platform.
   metacritic: number;
 }
@@ -33,7 +33,7 @@ const useGames = () => {
     // controller & signal
     const controller = new AbortController();
 
-    apiClient()
+    apiClient
       .get<GameResponse>('/games', { signal: controller.signal }) // 2nd args pass the signal
       .then((res) => setGames(res.data.results))
       .catch((err) => {
