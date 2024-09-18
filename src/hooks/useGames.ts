@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 import { CanceledError } from 'axios';
-import LoadingSkeleton from '../components/LoadingSkeletons';
+import LoadingSkeleton from '../components/GameCardSkeletons';
 
 interface Platform {
   id: number;
