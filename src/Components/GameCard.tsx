@@ -17,7 +17,8 @@ interface Props {
 
 const GameCards = ({ game }: Props) => {
   return (
-    <Card margin={'10px'}>
+    //TODO: make it into constants
+    <Card height={'400px'} width={'300px'} margin={'10px'} overflow="hidden">
       <Image src={getCroppedImage(game.background_image)} />
       <CardBody>
         <HStack>
