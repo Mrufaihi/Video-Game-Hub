@@ -6,7 +6,7 @@ import GameCardContainer from './GameCardContainer';
 
 const GameGrid = () => {
   //use it like any other hook
-  const { games, error, isLoading } = useGames(); //destructure the hook
+  const { data, error, isLoading } = useGames(); //destructure the hook
 
   const skeletons = [1, 2, 3, 4, 5, 6]; //random numbers, amount of skeletons. TODO: link them with game cards.
 
@@ -29,7 +29,7 @@ const GameGrid = () => {
 
       {/* Game Cards */}
       <SimpleGrid spacing={'20px'} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
-        {games?.map((game) => (
+        {data?.map((game) => (
           // wrap Game Cards with Containers
           <GameCardContainer>
             <GameCards game={game} />
