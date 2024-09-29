@@ -1,9 +1,13 @@
-import { HStack, Image, List, ListItem, Text } from '@chakra-ui/react';
+import { HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react';
 import useGenres from '../hooks/useGenres';
 import getCroppedImage from '../services/crop-image';
 
 const GenresList = () => {
-  const { data } = useGenres(); // we get genres info
+  const { data, isLoading, error } = useGenres(); // we get genres info from Geeric Data Hook
+
+  if (error) return null;
+  //when server request for genres, display spinner
+  if (isLoading) return <Spinner />;
 
   //display them as lists
   return (
