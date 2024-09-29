@@ -17,7 +17,7 @@ const GameGrid = () => {
 
       {/* Loading Skeletons */}
       {isLoading && (
-        <SimpleGrid spacing={'20px'} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
+        <SimpleGrid spacing={3} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
           {skeletons.map((skeleton) => (
             // wrap Game Cards with Containers
             <GameCardContainer>
@@ -28,7 +28,7 @@ const GameGrid = () => {
       )}
 
       {/* Game Cards */}
-      <SimpleGrid spacing={'20px'} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
+      <SimpleGrid spacing={3} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
         {data?.map((game) => (
           // wrap Game Cards with Containers
           <GameCardContainer>

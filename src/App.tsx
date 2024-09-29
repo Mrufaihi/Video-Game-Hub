@@ -1,7 +1,7 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react';
-import NavBar from './components/NavBar';
-import GameGrid from './components/GameGrid';
-import GenresList from './components/GenresList';
+import NavBar from './Components/NavBar';
+import GameGrid from './Components/GameGrid';
+import GenresList from './Components/GenresList';
 
 function App() {
   return (
@@ -9,6 +9,10 @@ function App() {
       templateAreas={{
         base: `'nav''main' `, //mobile is our base
         lg: `'nav nav' 'aside main' `, //large devices 1024px +
+      }}
+      templateColumns={{
+        base: '1fr',
+        lg: '200px 1fr', //genre Y is 200px , Gamesgrid Y is 1 fr
       }}
     >
       {/* TODO: change icon Bg + borders */}
