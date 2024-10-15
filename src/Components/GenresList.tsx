@@ -1,8 +1,19 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react';
-import useGenres from '../hooks/useGenres';
+import {
+  Button,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Spinner,
+  Text,
+} from '@chakra-ui/react';
+import useGenres, { Genres } from '../hooks/useGenres';
 import getCroppedImage from '../services/crop-image';
 
-const GenresList = () => {
+interface Props {
+  onSelectedGenre: (genre: Genres) => void;
+}
+const GenresList = ({ onSelectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres(); // we get genres info from Geeric Data Hook
 
   if (error) return null;
@@ -21,7 +32,13 @@ const GenresList = () => {
               borderRadius="8px"
               src={getCroppedImage(genre.image_background)}
             />
-            <Text>{genre.name}</Text>
+            <Button
+              onClick={() => onSelectedGenre(genre)}
+              fontSize="lg"
+              variant={'link'}
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}

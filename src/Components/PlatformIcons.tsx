@@ -32,7 +32,11 @@ const PlatformIcons = ({ game }: Props) => {
   return (
     <>
       {game.parent_platforms.map((platform) => (
-        <Icon color={'gray.500'} as={iconMap[platform.platform.slug]} /> //use iconMap mapping, link it with platform slug.
+        <Icon
+          key={platform.platform.id}
+          color={'gray.500'}
+          as={iconMap[platform.platform.slug]}
+        /> //use iconMap mapping, link it with platform slug.
       ))}
     </>
   );

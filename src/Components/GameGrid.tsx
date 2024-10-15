@@ -3,10 +3,14 @@ import useGames from '../hooks/useGames';
 import GameCards from './GameCard';
 import GameCardSkeletons from './GameCardSkeletons';
 import GameCardContainer from './GameCardContainer';
+import { Genres } from '../hooks/useGenres';
 
-const GameGrid = () => {
+interface Props {
+  selectedGenre: Genres | null;
+}
+const GameGrid = ({ selectedGenre }: Props) => {
   //use it like any other hook
-  const { data, error, isLoading } = useGames(); //destructure the hook
+  const { data, error, isLoading } = useGames(selectedGenre); //destructure the hook
 
   const skeletons = [1, 2, 3, 4, 5, 6]; //random numbers, amount of skeletons. TODO: link them with game cards.
 
@@ -20,7 +24,7 @@ const GameGrid = () => {
         <SimpleGrid spacing={3} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
           {skeletons.map((skeleton) => (
             // wrap Game Cards with Containers
-            <GameCardContainer>
+            <GameCardContainer key={skeleton}>
               <GameCardSkeletons />
             </GameCardContainer>
           ))}
@@ -31,7 +35,7 @@ const GameGrid = () => {
       <SimpleGrid spacing={3} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
         {data?.map((game) => (
           // wrap Game Cards with Containers
-          <GameCardContainer>
+          <GameCardContainer key={game.id}>
             <GameCards game={game} />
           </GameCardContainer>
         ))}
