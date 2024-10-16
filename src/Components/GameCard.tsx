@@ -16,10 +16,17 @@ interface Props {
 }
 
 const GameCards = ({ game }: Props) => {
+  let croppedImage;
+  try {
+    croppedImage = getCroppedImage(game.background_image);
+  } catch (error) {
+    console.error(error);
+    croppedImage = 'path/to/default/image.jpg'; // Fallback image path
+  }
+
   return (
-    //TODO: make it into constants
     <Card>
-      <Image src={getCroppedImage(game.background_image)} />
+      <Image src={croppedImage} />
       <CardBody>
         <HStack>
           <PlatformIcons game={game} />

@@ -4,13 +4,15 @@ import GameCards from './GameCard';
 import GameCardSkeletons from './GameCardSkeletons';
 import GameCardContainer from './GameCardContainer';
 import { Genres } from '../hooks/useGenres';
+import { Platform } from '../hooks/usePlatforms';
 
 interface Props {
   selectedGenre: Genres | null;
+  selectedPlatform: Platform | null;
 }
-const GameGrid = ({ selectedGenre }: Props) => {
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
   //use it like any other hook
-  const { data, error, isLoading } = useGames(selectedGenre); //destructure the hook
+  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform); //destructure the hook
 
   const skeletons = [1, 2, 3, 4, 5, 6]; //random numbers, amount of skeletons. TODO: link them with game cards.
 
