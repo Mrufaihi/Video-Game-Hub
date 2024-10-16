@@ -12,8 +12,10 @@ import getCroppedImage from '../services/crop-image';
 
 interface Props {
   onSelectedGenre: (genre: Genres) => void;
+  selectedGenre: Genres | null;
 }
-const GenresList = ({ onSelectedGenre }: Props) => {
+
+const GenresList = ({ onSelectedGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres(); // we get genres info from Geeric Data Hook
 
   if (error) return null;
@@ -34,6 +36,7 @@ const GenresList = ({ onSelectedGenre }: Props) => {
             />
             <Button
               onClick={() => onSelectedGenre(genre)}
+              fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
               fontSize="lg"
               variant={'link'}
             >
