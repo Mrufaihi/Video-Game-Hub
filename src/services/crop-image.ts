@@ -1,8 +1,6 @@
 const getCroppedImage = (url: string) => {
   //Exceptions
-  if (!url) {
-    throw new Error('URL cannot be null or undefined');
-  }
+  if (!url) return ''; // some game got no imgs (null)
 
   const mediaIndex = url.indexOf('media/');
   if (mediaIndex === -1) {
