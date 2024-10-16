@@ -16,13 +16,13 @@ interface Props {
 }
 
 const GameCards = ({ game }: Props) => {
-  let croppedImage;
-  try {
-    croppedImage = getCroppedImage(game.background_image);
-  } catch (error) {
-    console.error(error);
-    croppedImage = 'path/to/default/image.jpg'; // Fallback image path
-  }
+  // let croppedImage;
+  // try {
+  let croppedImage = getCroppedImage(game.background_image);
+  // } catch (error) {
+  //   console.error(error);
+  //   croppedImage = 'path/to/default/image.jpg'; // Fallback image path
+  // }
 
   return (
     <Card>
