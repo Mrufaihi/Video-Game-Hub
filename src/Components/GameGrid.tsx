@@ -14,33 +14,27 @@ const GameGrid = ({ gameQuery }: Props) => {
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; //random numbers, amount of skeletons. TODO: link them with game cards.
 
+  /* Errors*/
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <>
-      {/* Errors*/}
-      {error && <Text>{error}</Text>}
-
+    <SimpleGrid spacing={6} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
       {/* Loading Skeletons */}
-      {isLoading && (
-        <SimpleGrid spacing={6} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
-          {skeletons.map((skeleton) => (
-            // wrap Game Cards with Containers
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeletons />
-            </GameCardContainer>
-          ))}
-        </SimpleGrid>
-      )}
-
-      {/* Game Cards */}
-      <SimpleGrid spacing={6} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}>
-        {data?.map((game) => (
-          // wrap Game Cards with Containers
-          <GameCardContainer key={game.id}>
-            <GameCards game={game} />
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <GameCardContainer key={skeleton}>
+            <GameCardSkeletons />
           </GameCardContainer>
         ))}
-      </SimpleGrid>
-    </>
+
+      {/* Game Cards */}
+      {data?.map((game) => (
+        // wrap Game Cards with Containers
+        <GameCardContainer key={game.id}>
+          <GameCards game={game} />
+        </GameCardContainer>
+      ))}
+    </SimpleGrid>
   );
 };
 
