@@ -29,6 +29,7 @@ const iconMap: { [key: string]: IconType } = {
 };
 
 const PlatformIcons = ({ game }: Props) => {
+  if (!PlatformIcons) return null;
   return (
     <>
       {game.parent_platforms.map((platform) => (
