@@ -18,7 +18,7 @@ export interface Games {
 
 const useGames = (gameQuery: GameQuery) =>
   useData<Games>(
-    '/xgames',
+    '/games',
     {
       params: {
         //all params names are in rawg
