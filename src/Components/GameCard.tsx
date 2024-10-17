@@ -25,10 +25,10 @@ const GameCards = ({ game }: Props) => {
   // }
 
   return (
-    <Card>
+    <Card overflow={'hidden'}>
       <Image src={croppedImage} />
       <CardBody>
-        <HStack>
+        <HStack marginBottom={2}>
           <PlatformIcons game={game} />
           <Spacer />
           <GameScore score={game.metacritic} />
