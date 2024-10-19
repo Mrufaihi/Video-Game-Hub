@@ -1,4 +1,4 @@
-import useData from './useData';
+import useData from '../../src/hooks/useData';
 
 export interface Platform {
   id: number;

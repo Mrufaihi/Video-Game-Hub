@@ -6,11 +6,11 @@ import {
   Image,
   Spacer,
 } from '@chakra-ui/react';
-import { Games } from '../hooks/useGames';
-import PlatformIcons from './PlatformIcons';
-import GameScore from './GameScore';
-import getCroppedImage from '../services/crop-image';
-import Emoji from './Emoji';
+import { Games } from '../../src/hooks/useGames';
+import PlatformIcons from '../../src/components/PlatformIcons';
+import GameScore from '../../src/components/GameScore';
+import getCroppedImage from '../../src/services/crop-image';
+import Emoji from '../../src/components/Emoji';
 
 interface Props {
   game: Games;
