@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa'; //font awesome icons
 import { SiNintendo } from 'react-icons/si';
 import { IconType } from 'react-icons';
-import { Games } from '../../src/hooks/useGames';
+import { Games } from '../hooks/useGames';
 import { Icon } from '@chakra-ui/react';
 
 interface Props {
