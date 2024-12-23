@@ -8,6 +8,8 @@ import { useState } from 'react';
 import PlatformSelector from './Components/PlatformSelector';
 import SortSelector from './Components/SortSelector';
 import GameHeading from './Components/GameHeading';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './Components/Login';
 
 export interface GameQuery {
   genre: Genres | null;
@@ -15,59 +17,86 @@ export interface GameQuery {
   sort: string;
   searchValue: string;
 }
+// export interface login {
+//   user: null;
+//   username: null;
+// }
+
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
-    <Grid
-      templateAreas={{
-        base: `'nav''main' `, //mobile is our base
-        lg: `'nav nav' 'aside main' `, //large devices 1024px +
-      }}
-      templateColumns={{
-        base: '1fr',
-        lg: '200px 1fr', //genre Y is 200px , Gamesgrid Y is 1 fr
-      }}
-    >
-      {/* TODO: change icon Bg + borders */}
-
-      <GridItem area="nav">
-        <NavBar
-          onSearch={(searchValue) =>
-            setGameQuery({ ...gameQuery, searchValue })
-          }
-        />
-      </GridItem>
-
-      {/* Show only when Above Large */}
-      <Show above="lg">
-        <GridItem margin={'10px'} area="aside">
-          {/* display genre as list */}
-          <GenresList
-            selectedGenre={gameQuery.genre}
-            onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-          />
-        </GridItem>
-      </Show>
-
-      <GridItem area="main">
-        <GameHeading gameQuery={gameQuery} />
-        <HStack spacing={5} paddingLeft={2} marginBottom={2}>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectedPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
+    //wrap all with react router to manage pages
+    <Router>
+      {/* just the structure of app */}
+      <Grid
+        templateAreas={{
+          base: `'nav''main' `, //mobile is our base
+          lg: `'nav nav' 'aside main' `, //large devices 1024px +
+        }}
+        templateColumns={{
+          base: '1fr',
+          lg: '200px 1fr', //genre Y is 200px , Gamesgrid Y is 1 fr
+        }}
+      >
+        {/* TODO: change icon Bg + borders */}
+        {/* nav */}
+        <GridItem area="nav">
+          <NavBar
+            onSearch={(searchValue) =>
+              setGameQuery({ ...gameQuery, searchValue })
             }
           />
+        </GridItem>
 
-          <SortSelector
-            sortValue={gameQuery.sort}
-            onSelectSort={(sort) => setGameQuery({ ...gameQuery, sort })}
+        {/* Routes (all routes go through routes like switch) */}
+        <Routes>
+          {/* Route 1 (landing page) */}
+          <Route
+            path="/"
+            // element specify component to render for this route
+            element={
+              <>
+                <Show above="lg">
+                  <GridItem margin={'10px'} area="aside">
+                    {/* display genre as list */}
+                    <GenresList
+                      selectedGenre={gameQuery.genre}
+                      onSelectedGenre={(genre) =>
+                        setGameQuery({ ...gameQuery, genre })
+                      }
+                    />
+                  </GridItem>
+                </Show>
+                {/* main */}
+                <GridItem area="main">
+                  <GameHeading gameQuery={gameQuery} />
+                  <HStack spacing={5} paddingLeft={2} marginBottom={2}>
+                    <PlatformSelector
+                      selectedPlatform={gameQuery.platform}
+                      onSelectedPlatform={(platform) =>
+                        setGameQuery({ ...gameQuery, platform })
+                      }
+                    />
+                    <SortSelector
+                      sortValue={gameQuery.sort}
+                      onSelectSort={(sort) =>
+                        setGameQuery({ ...gameQuery, sort })
+                      }
+                    />
+                  </HStack>
+                  <GameGrid gameQuery={gameQuery} />
+                </GridItem>
+              </>
+            }
           />
-        </HStack>
-        <GameGrid gameQuery={gameQuery} />
-      </GridItem>
-    </Grid>
+          {/* end of element route 1 */}
+
+          {/* route 2 (login)*/}
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Grid>
+    </Router>
   );
 }
 
