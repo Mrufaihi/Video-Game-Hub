@@ -10,6 +10,7 @@ import SortSelector from './Components/SortSelector';
 import GameHeading from './Components/GameHeading';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Components/Login';
+import SteamGames from './Components/SteamGames.tsx';
 
 //simulate a change in master branch
 export interface GameQuery {
@@ -95,6 +96,7 @@ function App() {
 
           {/* route 2 (login)*/}
           <Route path="/login" element={<Login />} />
+          <Route path="/steamgames" element={<SteamGames />} />
         </Routes>
       </Grid>
     </Router>
