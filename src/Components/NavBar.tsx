@@ -4,6 +4,7 @@ import ColorModeSwitch from '../Components/ColorModeSwitch';
 import SearchInput from '../Components/SearchInput';
 import Login from './Login';
 import { Link } from 'react-router-dom';
+
 //random comment
 interface Props {
   onSearch: (searchValue: string) => void;
@@ -14,12 +15,17 @@ const NavBar = ({ onSearch }: Props) => {
   return (
     /* HStack = (Horizental) */
     <HStack>
-      <Image marginX={'10px'} boxSize={'50px'} src={logo} />
+      <Link to={'/'}>
+        <Image marginX={'10px'} boxSize={'50px'} src={logo} />
+      </Link>
       <SearchInput onSearch={onSearch} />
       <ColorModeSwitch />
       {/* router link to login page */}
+      <Link to={'/steamgames'}>
+        <Button>Steam</Button>
+      </Link>
       <Link to={'/login'}>
-        <Button>Login</Button>
+        <Button className="mr-1">Login</Button>
       </Link>
     </HStack>
   );

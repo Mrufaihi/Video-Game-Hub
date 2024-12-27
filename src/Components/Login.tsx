@@ -1,5 +1,4 @@
 import { Button } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import { auth, googleAuth } from '../firebase config/firebase';
 import {
   createUserWithEmailAndPassword,
@@ -43,9 +42,6 @@ const Login = () => {
       <div className="w-100% flex-column justify-center">
         <div className="">
           <h1 className="mr-1 text-xl">Login Page Here</h1>
-          <Link to={'/'}>
-            <Button>Home</Button>
-          </Link>
         </div>
 
         <div className="login mt-5">
