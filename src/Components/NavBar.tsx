@@ -2,7 +2,6 @@ import { Button, HStack, Image } from '@chakra-ui/react';
 import logo from '../assets/gamepad-icon 4.webp'; //import img src like module
 import ColorModeSwitch from '../Components/ColorModeSwitch';
 import SearchInput from '../Components/SearchInput';
-import Login from './Login';
 import { Link } from 'react-router-dom';
 
 //random comment

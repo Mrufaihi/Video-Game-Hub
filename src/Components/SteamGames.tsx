@@ -64,37 +64,39 @@ const SteamGames = () => {
     await addDoc(newGameRef, newGameData);
   };
 
-  //log game input state
-  console.log(gameName);
-
   return (
     <>
       <div className="flex-column">
         <input
+          className="border-2 mt-1"
           placeholder="Name"
           type="text"
           value={gameName}
           onChange={(e) => setGameName(e.target.value)}
         />
         <input
+          className="border-2 mt-1"
           placeholder="Rating"
           type="number"
           value={gameRating}
           onChange={(e) => setGameRating(e.target.valueAsNumber)}
         />
         <input
+          className="border-2 mt-1"
           placeholder="Platform"
           type="text"
           value={gamePlatform}
           onChange={(e) => setGamePlatform(e.target.value)}
         />
         <input
+          className="border-2 mt-1"
           placeholder="Release Date"
           type="number"
           value={gameRelease}
           onChange={(e) => setGameRelease(e.target.valueAsNumber)}
         />
         <input
+          className="border-2 mt-1"
           placeholder="Description"
           type="text"
           value={gameDescription}
@@ -109,8 +111,11 @@ const SteamGames = () => {
       <div className="w-100% flex-column">
         {steamGames.map((game) => (
           <div className="" key={game.id}>
-            <h1 style={{ color: game?.rating > 90 ? 'skyblue' : 'lime' }}>
-              Title: {game?.name}
+            <h1
+              className="border-b-4"
+              style={{ color: game?.rating > 90 ? 'skyblue' : 'lime' }}
+            >
+              Game: {game?.name}
             </h1>
             <p>Rating: {game?.rating}</p>
             <p>Platform: {game?.platform}</p>
