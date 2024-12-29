@@ -21,7 +21,7 @@ const NavBar = ({ onSearch }: Props) => {
       <ColorModeSwitch />
       {/* router link to login page */}
       <Link to={'/steamgames'}>
-        <Button>Steam</Button>
+        <Button>Favorites</Button>
       </Link>
       <Link to={'/login'}>
         <Button className="mr-1">Login</Button>

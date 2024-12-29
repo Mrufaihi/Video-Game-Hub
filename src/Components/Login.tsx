@@ -10,6 +10,7 @@ import { useState } from 'react';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const [loggedin, setLoggedIn] = useState(false)
 
   console.log(auth?.currentUser?.email); // ? here could be not authorized yet
 
@@ -39,11 +40,16 @@ const Login = () => {
 
   return (
     <>
+    {auth.currentUser ? 
       <div className="w-100% flex-column justify-center">
-        <div className="">
-          <h1 className="mr-1 text-xl">Login Page Here</h1>
-        </div>
-
+        <h1 className='text-2xl'>Logged in, Welcome {auth?.currentUser?.email}</h1>
+        <Button className="mt-10" onClick={SignOut}>
+          SignOut
+        </Button>
+      </div>
+      : //if not logged 
+      <div>
+        <h1 className='text-2xl'>Not Logged In</h1>
         <div className="login mt-5">
           {/* input 1 */}
           <input
@@ -65,14 +71,12 @@ const Login = () => {
           </Button>
         </div>
 
-        <Button className="mt-10" onClick={googleSignIn}>
+        <Button className="mt-2" onClick={googleSignIn}>
           Google Login
         </Button>
-
-        <Button className="mt-10" onClick={SignOut}>
-          SignOut
-        </Button>
       </div>
+      }
+      
     </>
   );
 };
