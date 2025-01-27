@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, Image } from '@chakra-ui/react';
 import { auth, googleAuth } from '../firebase config/firebase';
 import {
   createUserWithEmailAndPassword,
@@ -41,39 +41,41 @@ const Login = () => {
   return (
     <>
     {auth.currentUser ? 
-      <div className="w-100% flex-column justify-center">
+      <div className="flex-column justify-center self-center w-screen">
         <h1 className='text-2xl'>Logged in, Welcome {auth?.currentUser?.email}</h1>
         <Button className="mt-10" onClick={SignOut}>
           SignOut
         </Button>
       </div>
       : //if not logged 
-      <div>
-        <h1 className='text-2xl'>Not Logged In</h1>
-        <div className="login mt-5">
+      <div className='w-screen h-screen flex flex-col items-center justify-center '>
+        <h1 className='m-10 text-4xl font-bold'>Not Logged In</h1>
           {/* input 1 */}
           <input
             placeholder="Email"
-            className="mb-2"
+            className="m-5 w-80 p-3 rounded-lg bg-gray-200"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           {/* input 2 */}
           <input
+          className='m-5 w-80 p-3 rounded-lg bg-gray-200'
             placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button className="mt-2" onClick={signIn}>
-            Regular Sign in
-          </Button>
-        </div>
-
-        <Button className="mt-2" onClick={googleSignIn}>
-          Google Login
-        </Button>
+          <div>
+            <Button className="m-5 p-5 font-xl" onClick={signIn}>
+              Regular Sign in
+            </Button>
+            <Button  className="m-5" onClick={googleSignIn}>
+              Google 
+              {/* TODO: IMG NOT SHOWING */}
+              <Image src='../assets/google-icon.svg'></Image>
+            </Button>
+          </div>
       </div>
       }
       
