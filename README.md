@@ -2,22 +2,27 @@
 
 # 🎮 Video Game Hub
 
+<img width="1411" height="809" alt="Screenshot 2026-02-02 at 6 50 06 PM" src="https://github.com/user-attachments/assets/14b2d916-3e0b-406f-ae3e-597f32843620" />
+
+-----
+
+
 Welcome to the **Video Game Hub**! This project is a web application built with **React** and **TypeScript** that allows users to search and explore video games.
 
-## 🚀 Features
+## Features
 
 - **Game Search**: Easily find the games you're looking for by name or category.
 - **Responsive Design**: The app is fully responsive and works on all devices.
 - **Clean UI**: A simple and intuitive interface for an enjoyable user experience.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **React**: Frontend framework for building the user interface.
 - **TypeScript**: Strongly typed programming language for better code quality.
 - **CSS/Styled Components**: Styling the application.
 - **API Integration**: Fetch data from a video game API (if you're using one, mention it here).
 
-## 🔧 Installation
+## Installation
 
 1. **Clone the repository**:
 
@@ -45,7 +50,7 @@ Welcome to the **Video Game Hub**! This project is a web application built with 
 
    The app will be available at `http://localhost:3000`.
 
-## 🧪 Running Tests
+## Running Tests
 
 If you have tests set up, you can mention how to run them:
 
@@ -53,7 +58,7 @@ If you have tests set up, you can mention how to run them:
 npm test
 ```
 
-## 📦 Build for Production
+## Build for Production
 
 To create a production build:
 
